@@ -1,8 +1,4 @@
-// Demo of sending data via temporary files.  The default is to send data to gnuplot directly
-// through stdin.
-//
-// Compile it with:
-//   g++ -o example-tmpfile example-tmpfile.cc -lboost_iostreams -lboost_system -lboost_filesystem
+
 
 #include <map>
 #include <vector>
@@ -204,19 +200,7 @@ system("clear");
 
             const size_t Z = numInputs; // the dimension of the matrix
             //if size 2 skip
-            Matrix transCofMatrix;
-
-                    for(size_t i = 0; i < Z; ++i)
-            {
-                Row row(Z);
-
-                for(size_t j = 0; j < Z; ++j)
-                {
-                    row[j] = cofactormatrix[j][i];
-                }
-
-                transCofMatrix.push_back(row); // push each row after you fill it
-            }
+            
             for(int i = 0; i < numInputs; i++)
             {
                 for(int j = 0; j < numInputs; j++)
@@ -273,14 +257,6 @@ system("clear");
         
         
         
-
-
-        
-	// Data will be sent via a temporary file.  These are erased when you call
-	// gp.clearTmpfiles() or when gp goes out of scope.  If you pass a filename
-	// (e.g. "gp.file1d(pts, 'mydata.dat')"), then the named file will be created
-	// and won't be deleted (this is useful when creating a script).
-	//gp << "plot" << gp.file1d(xy_pts_A) << "with lines title 'cubic'" << std::endl;
         cin.get();
         cin.get();
         std::cout << "Press enter to exit." << std::endl;
